@@ -1,5 +1,7 @@
 package com.appland.appmap.output.v1;
 
+import java.util.Map;
+
 import com.alibaba.fastjson.annotation.JSONField;
 
 /**
@@ -13,6 +15,9 @@ public class HttpServerResponse {
 
   @JSONField(name = "mime_type")
   public String mimeType;
+
+  @JSONField
+  public Map<String, String> headers;
 
   /**
    * Record the status of an HTTP response.
@@ -33,6 +38,17 @@ public class HttpServerResponse {
    */
   public HttpServerResponse setMimeType(final String mimeType) {
     this.mimeType = mimeType;
+    return this;
+  }
+
+  /**
+   * Record the headers of an HTTP response.
+   * @param headers The headers to set
+   * @return {@code this}
+   * @see <a href="https://github.com/applandinc/appmap#http-server-response-attributes">GitHub: AppMap - HTTP server response attributes</a>
+   */
+  public HttpServerResponse setHeaders(final Map<String, String> headers) {
+    this.headers = headers;
     return this;
   }
 }
